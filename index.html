@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adik Wopyu</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .container {
+            text-align: center;
+        }
+        
+        .text {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+        
+        .hugging-dolls {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+        }
+        
+        .doll {
+            position: absolute;
+            width: 80px;
+            height: 120px;
+            background: #ff6b6b;
+            border-radius: 40px 40px 0 0;
+            animation: hug 2s infinite ease-in-out;
+        }
+        
+        .doll1 {
+            left: 30px;
+            background: linear-gradient(45deg, #ff9a9e, #ff6b6b);
+            transform-origin: right center;
+        }
+        
+        .doll2 {
+            right: 30px;
+            background: linear-gradient(135deg, #fad0c4, #ff9a9e);
+            transform-origin: left center;
+        }
+        
+        .doll::before {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            top: 20px;
+            left: 20px;
+        }
+        
+        .doll::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #333;
+            border-radius: 50%;
+            top: 30px;
+            left: 30px;
+        }
+        
+        @keyframes hug {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+            50% {
+                transform: rotate(-10deg);
+            }
+        }
+        
+        .doll2 {
+            animation: hug2 2s infinite ease-in-out;
+        }
+        
+        @keyframes hug2 {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+            50% {
+                transform: rotate(10deg);
+            }
+        }
+        
+        .hearts {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            opacity: 0;
+            animation: floatHearts 3s infinite;
+        }
+        
+        @keyframes floatHearts {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -100%) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -150%) scale(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text">Adik Wopyuuu 🫶🏻🫶🏻🫶🏻 <br> will you be mine? xixi</div>
+        <div class="hugging-dolls">
+            <div class="doll doll1"></div>
+            <div class="doll doll2"></div>
+            <div class="hearts">💖</div>
+        </div>
+    </div>
+
+    <script>
+        // Tambahkan efek hati bertebaran
+        function createHearts() {
+            const hearts = document.querySelector('.hearts');
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'hearts';
+                heart.innerHTML = '💖';
+                heart.style.left = Math.random() * 100 + 'px';
+                heart.style.animationDelay = Math.random() * 2 + 's';
+                document.querySelector('.hugging-dolls').appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 3000);
+            }, 1000);
+        }
+        
+        createHearts();
+    </script>
+</body>
+</html>
